@@ -8,7 +8,7 @@ class MySerial:
         self.ser = serial.Serial(port, baudrate)
 
     def query(self, cmd, terminal_char="\r"):
-        self.ser.write(cmd)
+        self.ser.write(cmd.encode())
         return ''.join(iter(self.ser.read, terminal_char))
 
 
