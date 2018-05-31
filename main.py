@@ -8,7 +8,7 @@ ser.open()
 
 data = "test!"
 
-
+print('here')
 try:
     while 1:
         ser.write(data.encode())
