@@ -2,22 +2,16 @@
 import serial
 import time
 
-ser = serial.Serial('/dev/ttyAMA0', 9600, timeout=1)
-ser.close()
-ser.open()
 
-data = "test!"
+class MySerial:
+    def __init__(self, port, baudrate):
+        self.ser = serial.Serial(port, baudrate)
 
-try:
-    while 1:
-        print('here')
+    def query(self, cmd, terminal_char="\r"):
+        self.ser.write(cmd)
+        return ''.join(iter(self.ser.read, terminal_char))
 
-        ser.write(data.encode())
-        print('sent')
-        time.sleep(1)
-        if ser.inWaiting():
-            response = ser.readline()
-            print(response)
 
-except KeyboardInterrupt:
-    ser.close()
+s = MySerial("/dev/ttyAMA0", 9600)
+result = s.query("get -temp\r")
+print(result)
