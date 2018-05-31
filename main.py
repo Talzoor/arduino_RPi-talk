@@ -1,21 +1,17 @@
-#!/usr/bin/env python
-
+# main
 import serial
-import string
+import time
 
-rot13 = string.maketrans(
-    "ABCDEFGHIJKLMabcdefghijklmNOPQRSTUVWXYZnopqrstuvwxyz",
-    "NOPQRSTUVWXYZnopqrstuvwxyzABCDEFGHIJKLMabcdefghijklm")
 
-test = serial.Serial("/dev/ttyAMA0", 9600)
-test.open()
+class MySerial:
+    def __init__(self, port, baudrate):
+        self.ser = serial.Serial(port, baudrate)
 
-try:
-    while True:
-        line = test.readline(eol='\r')
-        test.write(string.translate(line, rot13))
+    def query(self, cmd, terminal_char="\r"):
+        self.ser.write(cmd.encode())
+        return ''.join(iter(self.ser.read, terminal_char))
 
-except KeyboardInterrupt:
-    pass  # do cleanup here
 
-test.close()
+s = MySerial("/dev/ttyAMA0", 115200)
+result = s.query("get -temp\r")
+print(result)
