@@ -8,9 +8,10 @@ ser.open()
 
 data = "test!"
 
-print('here')
 try:
     while 1:
+        print('here')
+
         ser.write(data.encode())
         print('sent')
         time.sleep(1)
