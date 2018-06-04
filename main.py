@@ -21,7 +21,7 @@ class MySerial:
         ch_r = ''
         try:
             #print('in_w:{}'.format(self.ser.in_waiting))
-            nbChars = self.ser.in_waiting()
+            nbChars = self.ser.in_waiting
             if nbChars > 0:
                 ch_r = self.ser.read(nbChars)
                 print(ch_r)
