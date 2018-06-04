@@ -23,7 +23,8 @@ class MySerial:
 while True:
     print("Hello, world!")
     ch = window.getch()
-    if ch >= 0:
+    print(ch)
+    if ch == 'q':
         break
 
 s = MySerial("/dev/ttyS0", 9600)
