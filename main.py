@@ -20,10 +20,11 @@ class MySerial:
         ch_r_d = ''
         try:
             #print('in_w:{}'.format(self.ser.in_waiting))
-            if self.ser.in_waiting:
-                time.sleep(0.005)
-                ch_r = self.ser.read()
+            nbChars = self.ser.in_waiting()
+            if nbChars > 0:
+                ch_r = self.ser.read(nbChars)
                 ch_r_d = ch_r.decode()
+                #time.sleep(0.0005)
                 #print('{}'.format(ch_r_d), end='')
                 #self.ch_r += self.ser.read()
 
