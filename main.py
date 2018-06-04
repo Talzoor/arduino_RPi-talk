@@ -24,9 +24,12 @@ while True:
     print("Hello, world!")
     ch = window.getch()
     time.sleep(0.5)
-    print(ch)
-    if chr(ch).lower() == 'q':
-        break
+
+    try:
+        if chr(ch).lower() == 'q':
+            break
+    except:
+        pass
 
 #s = MySerial("/dev/ttyS0", 9600)
 #result = s.query("Test\n")
