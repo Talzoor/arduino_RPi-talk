@@ -3,8 +3,8 @@ import serial
 import time
 import curses
 
-window = curses.initscr()
-window.nodelay(1)
+#window = curses.initscr()
+#window.nodelay(1)
 
 
 
@@ -30,20 +30,20 @@ class MySerial:
 
 
 s = MySerial("/dev/ttyS0", 9600)
-
+i=0
 while True:
-    ch = window.getch()
-
-    result = s.write("Test\n")
+    #ch = window.getch()
+    i+=1
+    result = s.write("Test{}\n".format(i))
     time.sleep(0.5)
     result = s.read()
     #print(result)
 
-    try:
-        if chr(ch).lower() == 'q':
-            break
-    except:
-        pass
+    #try:
+        #if chr(ch).lower() == 'q':
+            #break
+    #except:
+    #    pass
 
-curses.endwin()
+#curses.endwin()
 
