@@ -1,6 +1,11 @@
 # main
 import serial
 import time
+import curses
+
+window = curses.initscr()
+window.nodelay(1)
+
 
 
 class MySerial:
@@ -9,16 +14,18 @@ class MySerial:
 
     def query(self, cmd, terminal_char="\n"):
         self.ser.write(cmd.encode())
-        print('here1')
         print('Ser.in_w:{}'.format(self.ser.in_waiting))
         cmd_read = self.ser.read()
-        time.sleep(0.5)
-        print('Ser.in_w:{}'.format(self.ser.in_waiting))
         print(cmd_read.decode())
-        print('here2')
         return 'done'
 
 
+while True:
+    print("Hello, world!")
+    ch = window.getch()
+    if ch >= 0:
+        break
+
 s = MySerial("/dev/ttyS0", 9600)
-result = s.query("Test\n")
-print(result)
+#result = s.query("Test\n")
+#print(result)
