@@ -20,7 +20,8 @@ class MySerial:
         try:
             if self.ser.in_waiting:
                 time.sleep(0.005)
-                print(self.ser.read().decode(), end='')
+                ch_r = self.ser.read()
+                print(ch_r.decode(), end='')
                 #self.ch_r += self.ser.read()
 
             #line = ''.join(self.ch_r.decode())
