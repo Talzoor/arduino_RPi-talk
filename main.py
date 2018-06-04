@@ -43,7 +43,7 @@ while True:
     time.sleep(0.5)
     result = s.read()
 
-    print(result)
+    #print(result)
 
     #try:
         #if chr(ch).lower() == 'q':
