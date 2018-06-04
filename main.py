@@ -43,7 +43,7 @@ while True:
     #ch = window.getch()
     i += 1
     result = s.write("Test{}\n".format(i))
-    time.sleep(0.5)
+    time.sleep(0.05)
     result = s.read()
 
     if not result == '':
