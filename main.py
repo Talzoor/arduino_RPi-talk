@@ -20,10 +20,10 @@ class MySerial:
         try:
             if self.ser.in_waiting:
                 time.sleep(0.005)
-                print(self.ser.read(), end='')
-                self.ch_r += self.ser.read()
+                print(self.ser.read().decode(), end='')
+                #self.ch_r += self.ser.read()
 
-            line = ''.join(self.ch_r.decode())
+            #line = ''.join(self.ch_r.decode())
             print(line)
         except:
             pass
