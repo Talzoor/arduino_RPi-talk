@@ -17,10 +17,14 @@ class MySerial:
         return 'done'
 
     def read(self):
-        if self.ser.in_waiting:
-            self.ch_r += self.ser.read()
-        line = ''.join(self.ch_r.decode())
-        print(line)
+        try:
+            if self.ser.in_waiting:
+                time.sleep(0.005)
+                self.ch_r += self.ser.read()
+            line = ''.join(self.ch_r.decode())
+            print(line)
+        except:
+            pass
         return ''
 
 
@@ -30,6 +34,7 @@ while True:
     ch = window.getch()
 
     result = s.write("Test\n")
+    time.sleep(0.5)
     result = s.read()
     #print(result)
 
