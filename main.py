@@ -24,7 +24,7 @@ class MySerial:
                 time.sleep(0.005)
                 ch_r = self.ser.read()
                 ch_r_d = ch_r.decode()
-                print('{}'.format(ch_r_d), end='')
+                #print('{}'.format(ch_r_d), end='')
                 #self.ch_r += self.ser.read()
 
             #line = ''.join(self.ch_r.decode())
@@ -43,7 +43,7 @@ while True:
     time.sleep(0.5)
     result = s.read()
 
-    #print(result)
+    print(result)
 
     #try:
         #if chr(ch).lower() == 'q':
