@@ -31,6 +31,7 @@ while True:
     except:
         pass
 
+curses.endwin()
 #s = MySerial("/dev/ttyS0", 9600)
 #result = s.query("Test\n")
 #print(result)
