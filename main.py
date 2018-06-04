@@ -18,7 +18,7 @@ class MySerial:
 
     def read(self):
         try:
-            print('in_w:{}'.format(self.ser.in_waiting))
+            #print('in_w:{}'.format(self.ser.in_waiting))
             if self.ser.in_waiting:
                 time.sleep(0.005)
                 ch_r = self.ser.read()
