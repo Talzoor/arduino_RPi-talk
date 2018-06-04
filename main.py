@@ -12,18 +12,26 @@ class MySerial:
     def __init__(self, port, baudrate):
         self.ser = serial.Serial(port, baudrate)
 
-    def query(self, cmd, terminal_char="\n"):
+    def write(self, cmd):
         self.ser.write(cmd.encode())
-        print('Ser.in_w:{}'.format(self.ser.in_waiting))
-        cmd_read = self.ser.read()
-        print(cmd_read.decode())
         return 'done'
 
+    def read(self):
+        if self.ser.in_waiting:
+            self.ch_r += self.ser.read()
+        line = ''.join(self.ch_r.decode())
+        print(line)
+        return ''
+
+
+s = MySerial("/dev/ttyS0", 9600)
 
 while True:
-    print("Hello, world!")
     ch = window.getch()
-    time.sleep(0.5)
+
+    result = s.write("Test\n")
+    result = s.read()
+    #print(result)
 
     try:
         if chr(ch).lower() == 'q':
@@ -32,6 +40,4 @@ while True:
         pass
 
 curses.endwin()
-#s = MySerial("/dev/ttyS0", 9600)
-#result = s.query("Test\n")
-#print(result)
+
