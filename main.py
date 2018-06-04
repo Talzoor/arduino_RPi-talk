@@ -20,18 +20,9 @@ class MySerial:
         ch_r_d = ''
         ch_r = ''
         try:
-            #print('in_w:{}'.format(self.ser.in_waiting))
             nbChars = self.ser.in_waiting
             if nbChars > 0:
                 ch_r = self.ser.read(nbChars).decode()
-                #print(ch_r)
-                #ch_r_d = ch_r.decode()
-                #time.sleep(0.0005)
-                #print('{}'.format(ch_r_d), end='')
-                #self.ch_r += self.ser.read()
-
-            #line = ''.join(self.ch_r.decode())
-            #print(line)
         except:
             pass
         return ch_r
@@ -42,18 +33,12 @@ i=0
 while True:
     #ch = window.getch()
     i += 1
-    result = s.write("Test{}\n".format(i))
+    #result = s.write("Test{}\n".format(i))
     time.sleep(0.05)
     result = s.read()
 
     if not result == '':
-        print(result, end='')
+        #print(result, end='')
+        result_w = s.write("Echo:{}\n".format(result))
 
-    #try:
-        #if chr(ch).lower() == 'q':
-            #break
-    #except:
-    #    pass
-
-#curses.endwin()
 
