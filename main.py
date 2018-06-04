@@ -23,8 +23,8 @@ class MySerial:
             #print('in_w:{}'.format(self.ser.in_waiting))
             nbChars = self.ser.in_waiting
             if nbChars > 0:
-                ch_r = self.ser.read(nbChars)
-                print(ch_r)
+                ch_r = self.ser.read(nbChars).decode()
+                #print(ch_r)
                 #ch_r_d = ch_r.decode()
                 #time.sleep(0.0005)
                 #print('{}'.format(ch_r_d), end='')
@@ -46,7 +46,7 @@ while True:
     time.sleep(0.5)
     result = s.read()
 
-    if not result=='':
+    if not result == '':
         print(result)
 
     #try:
