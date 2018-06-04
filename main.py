@@ -21,6 +21,7 @@ class MySerial:
             if self.ser.in_waiting:
                 time.sleep(0.005)
                 self.ch_r += self.ser.read()
+                print(self.ch_r, end='')
             line = ''.join(self.ch_r.decode())
             print(line)
         except:
