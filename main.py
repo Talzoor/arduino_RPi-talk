@@ -25,7 +25,7 @@ while True:
     ch = window.getch()
     time.sleep(0.5)
     print(ch)
-    if ch == 'q':
+    if chr(ch).lower() == 'q':
         break
 
 #s = MySerial("/dev/ttyS0", 9600)
