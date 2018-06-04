@@ -12,6 +12,7 @@ class MySerial:
         print('here1')
         print('Ser.in_w:{}'.format(self.ser.in_waiting))
         cmd_read = self.ser.read()
+        time.sleep(0.5)
         print('Ser.in_w:{}'.format(self.ser.in_waiting))
         print(cmd_read.decode())
         print('here2')
