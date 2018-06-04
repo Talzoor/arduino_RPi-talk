@@ -10,7 +10,9 @@ class MySerial:
     def query(self, cmd, terminal_char="\n"):
         self.ser.write(cmd.encode())
         print('here1')
+        print('Ser.in_w:{}'.format(self.ser.in_waiting))
         cmd_read = self.ser.read()
+        print('Ser.in_w:{}'.format(self.ser.in_waiting))
         print(cmd_read.decode())
         print('here2')
         return 'done'
