@@ -47,7 +47,7 @@ while True:
     result = s.read()
 
     if not result == '':
-        print(result)
+        print(result, end='')
 
     #try:
         #if chr(ch).lower() == 'q':
