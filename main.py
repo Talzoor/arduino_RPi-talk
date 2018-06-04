@@ -23,6 +23,7 @@ class MySerial:
 while True:
     print("Hello, world!")
     ch = window.getch()
+    time.sleep(0.05)
     print(ch)
     if ch == 'q':
         break
