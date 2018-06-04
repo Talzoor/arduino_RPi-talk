@@ -22,7 +22,7 @@ class MySerial:
             if self.ser.in_waiting:
                 time.sleep(0.005)
                 ch_r = self.ser.read()
-                print(ch_r.decode(), end='')
+                print('{}'.format(ch_r.decode()), end='')
                 #self.ch_r += self.ser.read()
 
             #line = ''.join(self.ch_r.decode())
@@ -36,10 +36,11 @@ s = MySerial("/dev/ttyS0", 9600)
 i=0
 while True:
     #ch = window.getch()
-    i+=1
+    i += 1
     result = s.write("Test{}\n".format(i))
     time.sleep(0.5)
     result = s.read()
+
     #print(result)
 
     #try:
