@@ -18,6 +18,7 @@ class MySerial:
 
     def read(self):
         ch_r_d = ''
+        ch_r = ''
         try:
             #print('in_w:{}'.format(self.ser.in_waiting))
             nbChars = self.ser.in_waiting()
@@ -33,7 +34,7 @@ class MySerial:
             #print(line)
         except:
             pass
-        return ch_r_d
+        return ch_r
 
 
 s = MySerial("/dev/ttyS0", 9600)
