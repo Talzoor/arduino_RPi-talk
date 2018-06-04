@@ -43,7 +43,7 @@ while True:
     time.sleep(0.5)
     result = s.read()
 
-    if not result==''
+    if not result=='':
         print(result)
 
     #try:
