@@ -12,6 +12,6 @@ class MySerial:
         return ''.join(iter(self.ser.read, terminal_char))
 
 
-s = MySerial("/dev/ttyAMA0", 9600)
+s = MySerial("/dev/ttyS0", 9600)
 result = s.query("get -temp\r")
 print(result)
