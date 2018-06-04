@@ -17,19 +17,21 @@ class MySerial:
         return 'done'
 
     def read(self):
+        ch_r_d = ''
         try:
             #print('in_w:{}'.format(self.ser.in_waiting))
             if self.ser.in_waiting:
                 time.sleep(0.005)
                 ch_r = self.ser.read()
-                print('{}'.format(ch_r.decode()), end='')
+                ch_r_d = ch_r.decode()
+                print('{}'.format(ch_r_d), end='')
                 #self.ch_r += self.ser.read()
 
             #line = ''.join(self.ch_r.decode())
             #print(line)
         except:
             pass
-        return ''
+        return ch_r_d
 
 
 s = MySerial("/dev/ttyS0", 9600)
@@ -41,7 +43,7 @@ while True:
     time.sleep(0.5)
     result = s.read()
 
-    #print(result)
+    print(result)
 
     #try:
         #if chr(ch).lower() == 'q':
