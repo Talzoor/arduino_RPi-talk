@@ -23,11 +23,11 @@ class MySerial:
 while True:
     print("Hello, world!")
     ch = window.getch()
-    time.sleep(0.05)
+    time.sleep(0.5)
     print(ch)
     if ch == 'q':
         break
 
-s = MySerial("/dev/ttyS0", 9600)
+#s = MySerial("/dev/ttyS0", 9600)
 #result = s.query("Test\n")
 #print(result)
