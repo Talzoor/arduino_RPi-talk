@@ -57,7 +57,7 @@ class MySerial:
 
 
 s = MySerial("/dev/ttyS0", 9600)
-command = SendCommand()
+command = SendCommand(0, 1, 2)
 i=0
 while True:
     #ch = window.getch()
