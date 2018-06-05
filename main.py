@@ -48,7 +48,7 @@ class MySerial:
         try:
             nbChars = self.ser.in_waiting
             if nbChars > 0:
-                time.sleep(0.005)
+                time.sleep(0.05)
                 nbChars = self.ser.in_waiting
                 ch_r = self.ser.read(nbChars).decode()
         except:
