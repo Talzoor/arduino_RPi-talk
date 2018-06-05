@@ -1,10 +1,36 @@
 # main
+from __future__ import print_function
 import serial
 import time
 import curses
 
 #window = curses.initscr()
 #window.nodelay(1)
+
+
+class SendCommand:
+    def __init__(self, stp_pin, dir_pin, en_pin):
+        self.stp_pin = stp_pin
+        self.dir_pin = dir_pin
+        self.en_pin = en_pin
+
+    def init_seq(self):
+        _str_to_send = ''
+        return _str_to_send
+
+    def move(self, _steps, _dir):
+        _str_to_send = ''
+        return _str_to_send
+
+    def moveto(self, _pos, _dir):
+        _str_to_send = ''
+        return _str_to_send
+
+    def define_vel_acc(self, _vel, _acc):
+        _str_to_send = ''
+        return _str_to_send
+
+
 
 
 
@@ -31,6 +57,7 @@ class MySerial:
 
 
 s = MySerial("/dev/ttyS0", 9600)
+command = SendCommand()
 i=0
 while True:
     #ch = window.getch()
