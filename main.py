@@ -50,7 +50,8 @@ class MySerial:
             if nbChars > 0:
                 time.sleep(0.05)
                 nbChars = self.ser.in_waiting
-                ch_r = self.ser.read(nbChars).decode()
+                ch_r = self.ser.read(nbChars)
+                ch_r = ch_r.decode()
         except:
             pass
         return ch_r
