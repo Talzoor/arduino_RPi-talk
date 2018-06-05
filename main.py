@@ -40,7 +40,7 @@ while True:
     result = s.read()
 
     if not result == '':
-        #print(result, end='')
+        print('Got:{}'.format(result), end='')
         result_w = s.write("Echo:{}\n".format(result))
 
 
