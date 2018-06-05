@@ -39,7 +39,7 @@ class MySerial:
         self.ser = serial.Serial(port, baudrate)
 
     def write(self, cmd):
-        if not cmd='':
+        if not cmd == '':
             print('cmd:{}'.format(cmd))
             self.ser.write(cmd.encode())
         return 'done'
