@@ -70,7 +70,7 @@ while True:
     result = s.read()
 
     if not result == '':
-        print('Got:{0}'.format(result), end='')
+        print('Got:{0}'.format(result), end=' ')
         result_w = s.write('Echo:{}'.format(result))
 
 
