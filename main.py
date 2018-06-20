@@ -40,7 +40,7 @@ class MySerial:
 
     def write(self, cmd):
         if not cmd == '':
-            print('cmd:{}'.format(cmd))
+            print('Echo:{}'.format(cmd))
             self.ser.write(cmd.encode())
         return 'done'
 
@@ -71,6 +71,6 @@ while True:
 
     if not result == '':
         print('Got:{0}'.format(result), end=' ')
-        result_w = s.write('Echo:{}'.format(result))
+        result_w = s.write('{}'.format(result))
 
 
