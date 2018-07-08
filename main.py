@@ -6,10 +6,6 @@ import curses
 import thread
 import sys
 
-
-command = SendCommand(0, 1, 2)
-
-
 class SendCommand:
     def __init__(self, stp_pin, dir_pin, en_pin):
         self.stp_pin = stp_pin
@@ -56,6 +52,9 @@ class MySerial:
         except:
             pass
         return ch_r
+
+
+command = SendCommand(0, 1, 2)
 
 
 def main():
