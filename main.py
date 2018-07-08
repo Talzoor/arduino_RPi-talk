@@ -3,7 +3,7 @@ from __future__ import print_function
 import serial
 import time
 import curses
-import _thread as thread
+import thread
 import sys
 
 
@@ -64,9 +64,7 @@ def main():
     command = SendCommand(0, 1, 2)
     i = 0
     while True:
-        # ch = window.getch()
         i += 1
-        # result = s.write("Test{}\n".format(i))
         time.sleep(0.05)
         result = s.read()
 
@@ -79,7 +77,7 @@ def input_thread():
     # global key_pressed
     while True:
         key_pressed = read_key()
-        print("Key pressed- %s" % key_pressed)
+        print("Key pressed-{}".format(key_pressed))
         # print(key_pressed)
         if key_pressed == "q" or key_pressed == "Q":
             thread.interrupt_main()
