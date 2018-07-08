@@ -7,8 +7,7 @@ import thread
 import sys
 
 
-# window = curses.initscr()
-# window.nodelay(1)
+command = SendCommand(0, 1, 2)
 
 
 class SendCommand:
@@ -22,11 +21,11 @@ class SendCommand:
         return _str_to_send
 
     def move(self, _steps, _dir):
-        _str_to_send = ''
+        _str_to_send = 'OK_move'
         return _str_to_send
 
     def moveto(self, _pos, _dir):
-        _str_to_send = 'OK'
+        _str_to_send = 'OK_moveto'
         return _str_to_send
 
     def define_vel_acc(self, _vel, _acc):
@@ -61,7 +60,6 @@ class MySerial:
 
 def main():
     s = MySerial("/dev/ttyS0", 9600)
-    command = SendCommand(0, 1, 2)
     i = 0
     while True:
         i += 1
@@ -83,9 +81,9 @@ def input_thread():
             thread.interrupt_main()
             break
         else:
-            command = SendCommand(0, 1, 2)
             res = command.move(100, 'R')
             print('res:{}'.format(res))
+
 
 def read_key():
     import termios
@@ -108,7 +106,6 @@ if __name__ == '__main__':
         i = 0
         flag_first_time = True
         while True:  # loop
-
             main()
             sys.stdout.flush()
 
