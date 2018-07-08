@@ -3,9 +3,12 @@ from __future__ import print_function
 import serial
 import time
 import curses
+import _thread as thread
+import sys
 
-#window = curses.initscr()
-#window.nodelay(1)
+
+# window = curses.initscr()
+# window.nodelay(1)
 
 
 class SendCommand:
@@ -29,9 +32,6 @@ class SendCommand:
     def define_vel_acc(self, _vel, _acc):
         _str_to_send = ''
         return _str_to_send
-
-
-
 
 
 class MySerial:
@@ -59,18 +59,61 @@ class MySerial:
         return ch_r
 
 
-s = MySerial("/dev/ttyS0", 9600)
-command = SendCommand(0, 1, 2)
-i=0
-while True:
-    #ch = window.getch()
-    i += 1
-    #result = s.write("Test{}\n".format(i))
-    time.sleep(0.05)
-    result = s.read()
+def main():
+    s = MySerial("/dev/ttyS0", 9600)
+    command = SendCommand(0, 1, 2)
+    i = 0
+    while True:
+        # ch = window.getch()
+        i += 1
+        # result = s.write("Test{}\n".format(i))
+        time.sleep(0.05)
+        result = s.read()
 
-    if not result == '':
-        print('Got:{0}'.format(result), end=' ')
-        result_w = s.write('{}'.format(result))
+        if not result == '':
+            print('Got:{0}'.format(result), end=' ')
+            result_w = s.write('{}'.format(result))
 
 
+def input_thread():
+    # global key_pressed
+    while True:
+        key_pressed = read_key()
+        print("Key pressed- %s" % key_pressed)
+        # print(key_pressed)
+        if key_pressed == "q" or key_pressed == "Q":
+            thread.interrupt_main()
+            break
+
+
+def read_key():
+    import termios
+    fd = sys.stdin.fileno()
+    old = termios.tcgetattr(fd)
+    new = termios.tcgetattr(fd)
+    new[3] &= ~(termios.ICANON | termios.ECHO)  # c_lflags
+    c = None
+    try:
+        termios.tcsetattr(fd, termios.TCSANOW, new)
+        c = sys.stdin.read(1)
+    finally:
+        termios.tcsetattr(fd, termios.TCSANOW, old)
+    return c
+
+
+if __name__ == '__main__':
+    try:
+        thread.start_new_thread(input_thread, ())  # ADDED
+        i = 0
+        flag_first_time = True
+        while True:  # loop
+
+            main()
+            sys.stdout.flush()
+
+    except KeyboardInterrupt:  # ADDED
+        print("Quit")
+
+    finally:
+        sys.exit(0)
+        pass
