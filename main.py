@@ -26,7 +26,7 @@ class SendCommand:
         return _str_to_send
 
     def moveto(self, _pos, _dir):
-        _str_to_send = ''
+        _str_to_send = 'OK'
         return _str_to_send
 
     def define_vel_acc(self, _vel, _acc):
@@ -82,7 +82,10 @@ def input_thread():
         if key_pressed == "q" or key_pressed == "Q":
             thread.interrupt_main()
             break
-
+        else:
+            command = SendCommand(0, 1, 2)
+            res = command.move(100, 'R')
+            print('res:{}'.format(res))
 
 def read_key():
     import termios
